@@ -9,6 +9,10 @@ const articleSchema = new mongoose.Schema({
     type: String,
     required: true,
   },
+  preview: {
+    type: String,
+    required: true,
+  },
   url: {
     type: String,
     required: true,

@@ -31,6 +31,7 @@ module.exports.createArticle = (req, res, next) => {
   const {
     title,
     description,
+    preview,
     url,
     createdAt,
     tags,
@@ -41,6 +42,7 @@ module.exports.createArticle = (req, res, next) => {
   Article.create({
     title,
     description,
+    preview,
     url,
     createdAt,
     tags,

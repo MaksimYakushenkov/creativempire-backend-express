@@ -15,6 +15,7 @@ router.post('/articles', celebrate({
   body: Joi.object().keys({
     title: Joi.string().required(),
     description: Joi.string().required(),
+    preview: Joi.string().required(),
     url: Joi.string().required(),
     tags: Joi.array().required(),
     htmlCode: Joi.string().required(),

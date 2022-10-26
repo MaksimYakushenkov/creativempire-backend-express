@@ -3,13 +3,15 @@ const mongoose = require('mongoose');
 const bodyParser = require('body-parser');
 const { errors } = require('celebrate');
 const helmet = require('helmet');
+const fileUpload = require('express-fileupload');
 const { limiter } = require('./utils/limiter/limiter');
 const { dataMovies, PORT } = require('./utils/config/database');
 const { requestLogger, errorLogger } = require('./middlewares/logger');
 const { corsRules } = require('./cors');
 
 const app = express();
-
+app.use('/uploads', express.static('uploads'));
+app.use(fileUpload());
 app.use(helmet());
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));

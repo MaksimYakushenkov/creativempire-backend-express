@@ -6,6 +6,10 @@ const allowedCors = [
   'localhost:3001',
   'http://localhost:3001',
   'https://localhost:3001',
+  'http://a0637716.xsph.ru',
+  'a0637716.xsph.ru',
+  'https://a0637716.xsph.ru',
+  'http://a0637716.xsph.ru/',
 ];
 
 const corsRules = (req, res, next) => {
