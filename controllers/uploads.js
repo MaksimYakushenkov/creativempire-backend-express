@@ -5,13 +5,14 @@ module.exports.uploadFile = (req, res) => {
   }
 
   const file = req.files.upload;
-  const path = `./uploads/${file.name}`;
+  const fileName = file.name.replaceAll(' ', '_');
+  const path = `./uploads/${fileName}`;
 
   file.mv(path, (err) => {
     if (err) {
       console.log(err);
       return res.status(500).send('err');
     }
-    return res.send({ url: `http://api.creativempire.online/uploads/${file.name}` });
+    return res.send({ url: `http://api.creativempire.online/uploads/${fileName}` });
   });
 };
