@@ -1,4 +1,4 @@
-const Article = require('../models/article');
+const Portfolio = require('../models/portfolio');
 const { NotFoundError } = require('../utils/errors/not-found-err');
 const { BadRequestError } = require('../utils/errors/bad-request-err');
 
@@ -9,24 +9,24 @@ const {
   notFoundMovieId,
 } = require('../utils/errors/constantsError');
 
-module.exports.getArticles = (req, res, next) => {
-  Article.find()
-    .then((articles) => res.send({ articles }))
+module.exports.getPortfolios = (req, res, next) => {
+  Portfolio.find()
+    .then((portfolios) => res.send({ portfolios }))
     .catch(next);
 };
 
-module.exports.getArticle = (req, res, next) => {
-  Article.find({ url: req.params.articleUrl })
-    .then((article) => {
-      if (!article) {
+module.exports.getPortfolio = (req, res, next) => {
+  Portfolio.find({ url: req.params.portfolioUrl })
+    .then((portfolio) => {
+      if (!portfolio) {
         res.send('Не найдено');
       }
-      res.send({ article });
+      res.send({ portfolio });
     })
     .catch((err) => next(err));
 };
 
-module.exports.createArticle = (req, res, next) => {
+module.exports.createPortfolio = (req, res, next) => {
   const {
     title,
     description,
@@ -34,17 +34,25 @@ module.exports.createArticle = (req, res, next) => {
     url,
     createdAt,
     tags,
+    category,
+    client,
+    duration,
+    price,
     htmlCode,
     metaTitle,
     metaDescription,
   } = req.body;
-  Article.create({
+  Portfolio.create({
     title,
     description,
     preview,
     url,
     createdAt,
     tags,
+    category,
+    client,
+    duration,
+    price,
     htmlCode,
     metaTitle,
     metaDescription,
@@ -58,7 +66,7 @@ module.exports.createArticle = (req, res, next) => {
     });
 };
 
-module.exports.updateArticle = (req, res, next) => {
+module.exports.updatePortfolio = (req, res, next) => {
   const {
     title,
     description,
@@ -66,12 +74,16 @@ module.exports.updateArticle = (req, res, next) => {
     url,
     createdAt,
     tags,
+    category,
+    client,
+    duration,
+    price,
     htmlCode,
     metaTitle,
     metaDescription,
   } = req.body;
-  Article.findByIdAndUpdate(
-    req.params.articleId,
+  Portfolio.findByIdAndUpdate(
+    req.params.portfolioId,
     {
       title,
       description,
@@ -79,6 +91,10 @@ module.exports.updateArticle = (req, res, next) => {
       url,
       createdAt,
       tags,
+      category,
+      client,
+      duration,
+      price,
       htmlCode,
       metaTitle,
       metaDescription,
@@ -88,7 +104,7 @@ module.exports.updateArticle = (req, res, next) => {
       runValidators: true,
     },
   )
-    .then((article) => res.send({ article }))
+    .then((portfolio) => res.send({ portfolio }))
     .catch((err) => {
       if (err.name === 'ValidationError') {
         return next(new BadRequestError(invalidProperties));
@@ -97,13 +113,13 @@ module.exports.updateArticle = (req, res, next) => {
     });
 };
 
-module.exports.deleteArticle = (req, res, next) => {
-  Article.findById(req.params.articleId)
-    .then((article) => {
-      if (!article) {
+module.exports.deletePortfolio = (req, res, next) => {
+  Portfolio.findById(req.params.portfolioId)
+    .then((portfolio) => {
+      if (!portfolio) {
         throw new NotFoundError(notFoundMovieId);
       }
-      Article.findByIdAndRemove(req.params.articleId)
+      Portfolio.findByIdAndRemove(req.params.portfolioId)
         .then(() => res.send({ message: movieIsDeleted }))
         .catch((err) => next(err));
     })

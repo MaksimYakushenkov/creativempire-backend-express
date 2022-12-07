@@ -13,6 +13,6 @@ module.exports.uploadFile = (req, res) => {
       console.log(err);
       return res.status(500).send('err');
     }
-    return res.send({ url: `http://api.creativempire.online/uploads/${fileName}` });
+    return res.send({ url: `http://localhost:3001/uploads/${fileName}` });
   });
 };
