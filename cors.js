@@ -9,7 +9,12 @@ const allowedCors = [
   'http://a0637716.xsph.ru',
   'a0637716.xsph.ru',
   'https://a0637716.xsph.ru',
-  'http://a0637716.xsph.ru/',
+  'http://a0637716.xsph.ru',
+  'http://creativempire.ru',
+  'https://creativempire.ru',
+  'https://www.creativempire.ru',
+  'http://www.creativempire.ru',
+  'creativempire.ru',
 ];
 
 const corsRules = (req, res, next) => {
