@@ -1,3 +1,5 @@
+const serverName = require('../utils/config/serverName');
+
 // eslint-disable-next-line consistent-return
 module.exports.uploadFile = (req, res) => {
   if (!req.files) {
@@ -13,6 +15,6 @@ module.exports.uploadFile = (req, res) => {
       console.log(err);
       return res.status(500).send('err');
     }
-    return res.send({ url: `http://api.creativempire.ru/uploads/${fileName}` });
+    return res.send({ url: `${serverName}/uploads/${fileName}` });
   });
 };
