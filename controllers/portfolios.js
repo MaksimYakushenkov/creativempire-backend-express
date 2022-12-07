@@ -28,6 +28,7 @@ module.exports.getPortfolio = (req, res, next) => {
 
 module.exports.createPortfolio = (req, res, next) => {
   const {
+    filter,
     title,
     description,
     preview,
@@ -43,6 +44,7 @@ module.exports.createPortfolio = (req, res, next) => {
     metaDescription,
   } = req.body;
   Portfolio.create({
+    filter,
     title,
     description,
     preview,
@@ -57,7 +59,7 @@ module.exports.createPortfolio = (req, res, next) => {
     metaTitle,
     metaDescription,
   })
-    .then((article) => res.status(201).send({ article }))
+    .then((portfolio) => res.status(201).send({ portfolio }))
     .catch((err) => {
       if (err.name === 'ValidationError') {
         return next(new BadRequestError(invalidProperties));
@@ -68,6 +70,7 @@ module.exports.createPortfolio = (req, res, next) => {
 
 module.exports.updatePortfolio = (req, res, next) => {
   const {
+    filter,
     title,
     description,
     preview,
@@ -85,6 +88,7 @@ module.exports.updatePortfolio = (req, res, next) => {
   Portfolio.findByIdAndUpdate(
     req.params.portfolioId,
     {
+      filter,
       title,
       description,
       preview,
