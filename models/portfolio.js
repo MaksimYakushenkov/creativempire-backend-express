@@ -5,6 +5,10 @@ const portfolioSchema = new mongoose.Schema({
     type: String,
     required: true,
   },
+  miniPreview: {
+    type: String,
+    required: true,
+  },
   title: {
     type: String,
     required: true,

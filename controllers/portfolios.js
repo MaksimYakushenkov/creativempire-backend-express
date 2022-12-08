@@ -29,6 +29,7 @@ module.exports.getPortfolio = (req, res, next) => {
 module.exports.createPortfolio = (req, res, next) => {
   const {
     filter,
+    miniPreview,
     title,
     description,
     preview,
@@ -44,6 +45,7 @@ module.exports.createPortfolio = (req, res, next) => {
     metaDescription,
   } = req.body;
   Portfolio.create({
+    miniPreview,
     filter,
     title,
     description,
@@ -71,6 +73,7 @@ module.exports.createPortfolio = (req, res, next) => {
 module.exports.updatePortfolio = (req, res, next) => {
   const {
     filter,
+    miniPreview,
     title,
     description,
     preview,
@@ -89,6 +92,7 @@ module.exports.updatePortfolio = (req, res, next) => {
     req.params.portfolioId,
     {
       filter,
+      miniPreview,
       title,
       description,
       preview,
