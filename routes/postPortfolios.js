@@ -7,6 +7,7 @@ const {
 router.post('/portfolios', celebrate({
   body: Joi.object().keys({
     filter: Joi.string().required(),
+    miniPreview: Joi.string().required(),
     title: Joi.string().required(),
     description: Joi.string().required(),
     preview: Joi.string().required(),
@@ -25,6 +26,7 @@ router.post('/portfolios', celebrate({
 router.patch('/portfolios/:portfolioId', celebrate({
   body: Joi.object().keys({
     filter: Joi.string().required(),
+    miniPreview: Joi.string().required(),
     title: Joi.string().required(),
     description: Joi.string().required(),
     preview: Joi.string().required(),
