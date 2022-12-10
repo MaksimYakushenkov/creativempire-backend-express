@@ -51,6 +51,18 @@ const portfolioSchema = new mongoose.Schema({
     type: Number,
     required: true,
   },
+  overview: {
+    type: String,
+    required: true,
+  },
+  execution: {
+    type: String,
+    required: true,
+  },
+  result: {
+    type: String,
+    required: true,
+  },
   htmlCode: {
     type: String,
     required: true,
