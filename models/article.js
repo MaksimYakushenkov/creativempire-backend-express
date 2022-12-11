@@ -1,5 +1,5 @@
 const mongoose = require('mongoose');
-const { createDateFormat } = require('../utils/createDateFormat/createDateFormat');
+const { formatedDate } = require('../utils/createDateFormat/createDateFormat');
 
 const articleSchema = new mongoose.Schema({
   category: {
@@ -28,7 +28,7 @@ const articleSchema = new mongoose.Schema({
   },
   createdAt: {
     type: String,
-    default: createDateFormat,
+    default: formatedDate,
   },
   tags: [
     {

@@ -1,5 +1,4 @@
 const date = new Date();
-
 const monthsData = {
   0: 'января',
   1: 'февраля',
@@ -15,10 +14,6 @@ const monthsData = {
   11: 'декабря',
 };
 
-const createDateFormat = () => {
-  const createdAt = `${date.getDate()} ${monthsData.date.getMonth()} ${date.getFullYear()}`;
+const formatedDate = `${date.getDate()} ${monthsData[date.getMonth()]} ${date.getFullYear()}`;
 
-  return createdAt;
-};
-
-module.exports = createDateFormat;
+module.exports = { formatedDate };
