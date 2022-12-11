@@ -1,11 +1,20 @@
 const mongoose = require('mongoose');
+const { createDateFormat } = require('../utils/createDateFormat/createDateFormat');
 
 const articleSchema = new mongoose.Schema({
+  category: {
+    type: String,
+    required: true,
+  },
   title: {
     type: String,
     required: true,
   },
   description: {
+    type: String,
+    required: true,
+  },
+  miniPreview: {
     type: String,
     required: true,
   },
@@ -18,8 +27,8 @@ const articleSchema = new mongoose.Schema({
     required: true,
   },
   createdAt: {
-    type: Date,
-    default: Date.now(),
+    type: String,
+    default: createDateFormat,
   },
   tags: [
     {

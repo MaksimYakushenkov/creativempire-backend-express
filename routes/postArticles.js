@@ -6,8 +6,10 @@ const {
 
 router.post('/articles', celebrate({
   body: Joi.object().keys({
+    category: Joi.string().required(),
     title: Joi.string().required(),
     description: Joi.string().required(),
+    miniPreview: Joi.string().required(),
     preview: Joi.string().required(),
     url: Joi.string().required(),
     tags: Joi.array().required(),
@@ -19,8 +21,10 @@ router.post('/articles', celebrate({
 
 router.patch('/articles/:articleId', celebrate({
   body: Joi.object().keys({
+    category: Joi.string().required(),
     title: Joi.string().required(),
     description: Joi.string().required(),
+    miniPreview: Joi.string().required(),
     preview: Joi.string().required(),
     url: Joi.string().required(),
     tags: Joi.array().required(),

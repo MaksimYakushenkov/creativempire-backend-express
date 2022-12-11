@@ -28,8 +28,10 @@ module.exports.getArticle = (req, res, next) => {
 
 module.exports.createArticle = (req, res, next) => {
   const {
+    category,
     title,
     description,
+    miniPreview,
     preview,
     url,
     createdAt,
@@ -39,8 +41,10 @@ module.exports.createArticle = (req, res, next) => {
     metaDescription,
   } = req.body;
   Article.create({
+    category,
     title,
     description,
+    miniPreview,
     preview,
     url,
     createdAt,
@@ -60,8 +64,10 @@ module.exports.createArticle = (req, res, next) => {
 
 module.exports.updateArticle = (req, res, next) => {
   const {
+    category,
     title,
     description,
+    miniPreview,
     preview,
     url,
     createdAt,
@@ -73,8 +79,10 @@ module.exports.updateArticle = (req, res, next) => {
   Article.findByIdAndUpdate(
     req.params.articleId,
     {
+      category,
       title,
       description,
+      miniPreview,
       preview,
       url,
       createdAt,
