@@ -11,6 +11,7 @@ const allowedCors = [
   'https://www.creativempire.ru',
   'http://www.creativempire.ru',
   'creativempire.ru',
+  'http://localhost:3000/',
 ];
 
 const corsRules = (req, res, next) => {
