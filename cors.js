@@ -17,7 +17,7 @@ const allowedCors = [
 const corsRules = (req, res, next) => {
   const { origin } = req.headers;
   const { method } = req;
-  const DEFAULT_ALLOWED_METHODS = 'GET,HEAD,PUT,PATCH,POST,DELETE';
+  const DEFAULT_ALLOWED_METHODS = 'GET,HEAD,PUT,PATCH,POST,DELETE,OPTIONS';
   const requestHeaders = req.headers['x-csrf-token'];
 
   if (allowedCors.includes(origin)) {
