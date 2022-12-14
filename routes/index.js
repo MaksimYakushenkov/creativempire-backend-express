@@ -6,6 +6,7 @@ router.use(require('./getArticles'));
 router.use(require('./getPortfolios'));
 
 router.use(require('../middlewares/auth'));
+router.use(require('./users'));
 router.use(require('./postArticles'));
 router.use(require('./postPortfolios'));
 
