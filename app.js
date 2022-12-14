@@ -9,10 +9,27 @@ const { dataMovies, PORT } = require('./utils/config/database');
 const { requestLogger, errorLogger } = require('./middlewares/logger');
 // const { corsRules } = require('./cors');
 
-const app = express();
+const allowedCors = [
+  'localhost:3000',
+  'http://localhost:3000',
+  'https://localhost:3000',
+  'localhost:3001',
+  'http://localhost:3001',
+  'https://localhost:3001',
+  'http://creativempire.ru',
+  'https://creativempire.ru',
+  'https://www.creativempire.ru',
+  'http://www.creativempire.ru',
+  'creativempire.ru',
+  'http://localhost:3000/',
+];
 
+const app = express();
 app.use((req, res, next) => {
-  res.header('Access-Control-Allow-Origin', '*');
+  const { origin } = req.headers;
+  if (allowedCors.includes(origin)) {
+    res.header('Access-Control-Allow-Origin', origin);
+  }
   res.header('Access-Control-Allow-Methods', 'GET, HEAD, OPTIONS, POST, PUT, PATCH');
   res.header('Access-Control-Allow-Headers', 'Origin, X-Requested-With, Content-Type, Accept, Authorization');
 
